@@ -1,0 +1,82 @@
+<main class="flex flex-col items-center justify-center">
+  <section
+    class="max-sm:m-1 px-3 py-2 max-h-[400] border-[1px] border-slate-800 shadow-lg shadow-slate-900 rounded-xl bg-black"
+  >
+    <input
+      type="text"
+      id="inputField"
+      class="w-full h-28 max-md:h-24 bg-transparent text-slate-200 text-5xl focus:outline-none focus:cursor-all-scroll"
+      [ngModel]="currentValue |  number: '.3'"
+      autofocus
+      (keydown.enter)="calculate()"
+      [maxlength]="24"
+    />
+    <div class="mt-6 grid grid-cols-4 grid-rows-5 gap-y-2 md:gap-x-2">
+      <button
+        (click)="appendInput('%')"
+        class="bg-slate-500 row-start-1 col-start-1 mx-auto"
+      >
+        %
+      </button>
+      <button
+        (click)="clear()"
+        class="bg-slate-500 row-start-1 col-start-2 mx-auto"
+      >
+        C
+      </button>
+      <button
+        (click)="backspace()"
+        class="bg-slate-500 row-start-1 col-start-3 mx-auto"
+      >
+        ←
+      </button>
+
+      @for(number of numbers;track number){
+      <button
+        (click)="appendInput(number)"
+        class="bg-slate-900 row-span-1 mx-auto"
+      >
+        {{ number }}
+      </button>
+      }
+      <button
+        (click)="appendInput('0')"
+        class="bg-slate-900 col-span-2 flex items-center justify-center md:px-40 px-[110px] mx-auto"
+      >
+        <span>0</span>
+      </button>
+      <button (click)="appendInput('.')" class="bg-slate-900 mx-auto">.</button>
+
+      <button
+        (click)="appendInput('*')"
+        class="bg-amber-600 col-start-4 col-span-1 row-start-1 mx-auto"
+      >
+        <span>×</span>
+      </button>
+      <button
+        (click)="appendInput('/')"
+        class="bg-amber-600 col-start-4 col-span-1 row-start-2 mx-auto"
+      >
+        <span>÷</span>
+      </button>
+      <button
+        (click)="appendInput('-')"
+        class="bg-amber-600 col-start-4 col-span-1 row-start-3 mx-auto"
+      >
+        <span>-</span>
+      </button>
+      <button
+        (click)="appendInput('+')"
+        class="bg-amber-600 col-start-4 col-span-1 row-start-4 mx-auto"
+      >
+        <span>+</span>
+      </button>
+      <button
+        (click)="calculate()"
+        class="bg-amber-600 col-start-4 col-span-1 row-start-5 mx-auto"
+      >
+        <span>=</span>
+      </button>
+    </div>
+  </section>
+</main>
